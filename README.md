@@ -32,7 +32,8 @@ A tiny "micro feed" application where authenticated users can create, read, upda
 
 ```
 ├── app/
-│   ├── actions/          # Server actions for post operations
+│   ├── actions/          
+│   ├── api/              # Server actions for post operations
 │   ├── globals.css       # Global styles and Tailwind imports
 │   ├── layout.tsx        # Root layout with theme provider
 │   └── page.tsx          # Main feed page
