@@ -6,6 +6,9 @@ A tiny "micro feed" application where authenticated users can create, read, upda
 
 **Live demo:** [https://micro-feed-wheat.vercel.app/](https://micro-feed-wheat.vercel.app/)
 
+![Home Page Light](public/images/micro-feed-home.png)
+![Home Page Dark](public/images/micro-feed-dark.png)
+
 ## Features
 
 - ✅ **Authentication**: Sign up, sign in, and sign out with Supabase Auth
