@@ -2,6 +2,10 @@
 
 A tiny "micro feed" application where authenticated users can create, read, update, delete, and like posts with a 280-character limit.
 
+# Micro Feed
+
+**Live demo:** [https://micro-feed-wheat.vercel.app/](https://micro-feed-wheat.vercel.app/)
+
 ## Features
 
 - ✅ **Authentication**: Sign up, sign in, and sign out with Supabase Auth
