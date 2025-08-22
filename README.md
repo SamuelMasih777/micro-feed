@@ -80,6 +80,7 @@ cp env.example .env.local
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ```
 
 ### 4. Database Setup
@@ -133,6 +134,8 @@ create policy "like" on likes for insert with check (auth.uid() = user_id);
 create policy "unlike" on likes for delete using (auth.uid() = user_id);
 ```
 
+Or the supabase-init.sql can be used for refrence to make the tables
+
 ### 5. Run Development Server
 
 ```bash
@@ -145,7 +148,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Architecture Choices
 
-**Server Actions vs Route Handlers**: I chose Server Actions for this project because they provide a more integrated experience with Next.js 14, better type safety, and simpler error handling. They also eliminate the need for separate API route files while maintaining the same security and validation benefits.
+**Server Actions vs Route Handlers**: I Used Next.js app routes and route handlers for server actions, balancing simplicity with future scalability. Optimistic updates in the frontend (e.g., after posting) reduce perceived latency..
 
 **Error Handling Strategy**: Comprehensive error handling with user-friendly messages, proper HTTP status codes, and graceful fallbacks. Server-side validation with Zod ensures data integrity, while client-side validation provides immediate feedback.
 
@@ -167,6 +170,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 5. **Comments system**: Added comment count display but skipped the actual commenting functionality to keep the scope focused.
 
+6. **Better UI**: As the more focus area was the development of routes and functionality and due to time constraint Basic UI is developed we can develop more decent UI but currently also all are good and Mobile Responsive.
+
 **Time Allocation**: 
 - Core functionality (70%): Authentication, CRUD operations, likes
 - UI/UX (20%): Responsive design, theme toggle, shadcn/ui components
@@ -174,7 +179,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## API Endpoints
 
-The application uses Server Actions instead of traditional API routes:
+The application uses App routes:
 
 - `createPost(data)`: Create a new post
 - `updatePost(id, data)`: Update an existing post
