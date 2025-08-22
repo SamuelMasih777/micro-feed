@@ -1,0 +1,85 @@
+import { createBrowserClient } from '@supabase/ssr';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+export const supabase = createBrowserClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    storageKey: 'sb-auth-token',
+    autoRefreshToken: true,
+    detectSessionInUrl: true
+  }
+});
+
+// Database table names
+export const TABLES = {
+  PROFILES: 'profiles',
+  POSTS: 'posts',
+  LIKES: 'likes',
+} as const;
+
+// Database types
+export type Database = {
+  public: {
+    Tables: {
+      profiles: {
+        Row: {
+          id: string;
+          username: string;
+          created_at: string;
+        };
+        Insert: {
+          id: string;
+          username: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          username?: string;
+          created_at?: string;
+        };
+      };
+      posts: {
+        Row: {
+          id: string;
+          author_id: string;
+          content: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          author_id: string;
+          content: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          author_id?: string;
+          content?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      likes: {
+        Row: {
+          post_id: string;
+          user_id: string;
+          created_at: string;
+        };
+        Insert: {
+          post_id: string;
+          user_id: string;
+          created_at?: string;
+        };
+        Update: {
+          post_id?: string;
+          user_id?: string;
+          created_at?: string;
+        };
+      };
+    };
+  };
+};
